@@ -32,6 +32,8 @@ var makeCmd = &cobra.Command{
 	It will create one '.html' file. CSS will be embedded inside it (internal CSS).`,
 	Run: func(cmd *cobra.Command, args []string) {
 
+		fmt.Println("mdhtml " + args[0] + " called")
+
 		file, err := ioutil.ReadFile(args[0])
 		if err != nil {
 			log.Fatal(err)
@@ -56,8 +58,6 @@ var makeCmd = &cobra.Command{
 		if err != nil {
 			panic(err)
 		}
-
-		fmt.Println("make called")
 
 		if _, err := os.Stat(args[0] + ".html"); os.IsNotExist(err) {
 			fmt.Println(err)

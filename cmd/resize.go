@@ -31,7 +31,9 @@ var resizeCmd = &cobra.Command{
 	Short: "resize an image",
 	Long:  `as arguments use wanted 1:path, 2:width 3:quality`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// open "test.jpg"
+
+		fmt.Println("resize " + args[0] + " called")
+
 		file, err := os.Open(args[0])
 		if err != nil {
 			log.Fatal(err)
@@ -64,7 +66,6 @@ var resizeCmd = &cobra.Command{
 		// write new image into file
 		jpeg.Encode(newFile, resizeImg, &jpeg.Options{quality})
 
-		fmt.Println("resize " + args[0] + " called")
 		if _, err := os.Stat(newImg); os.IsNotExist(err) {
 			log.Fatal("failure in creating " + newImg)
 		}
