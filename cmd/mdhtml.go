@@ -64,7 +64,7 @@ var makeCmd = &cobra.Command{
 		}
 
 		if _, err := os.Stat(args[0] + ".html"); err == nil {
-			fmt.Println("HTML file created")
+			fmt.Println(args[0] + ".html " + "created")
 		}
 	},
 }
